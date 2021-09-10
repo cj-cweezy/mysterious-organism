@@ -69,3 +69,14 @@ function pAequorFactory (num, arr) {
   }     
 }
 //Creates array of 30 specimens that are suitable to study
+let specimens = []
+let num = 1
+
+  do {
+    let temp = pAequorFactory(num, mockUpStrand())
+    if (temp.willLikelySurvive() === true) {
+      specimens.push(temp.dna)
+      num++
+    } 
+  } while (num <= 30)
+
