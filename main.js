@@ -42,9 +42,30 @@ function pAequorFactory (num, arr) {
       }
     },
     //Compares the DNA of two strands and returns the percentage of the two strands that are the same
-    
+    compareDNA(object) {
+      let count = 0
+      for (let i = 0; i <= 14; i++) {
+        if (this.dna[i] === object.dna[i]) {
+          count++
+        }
+      }
+     let percent = ((count / 15) * 100).toFixed()
+     return `Specimen ${this.specimenNum} and specimen ${object.specimenNum} have n${percent}% of their DNA in common.`
+    },
+    //Determines if at least 60% of the DNA contains 'C' or 'G' bases
+    willLikelySurvive() {
+      let count = 0
+      for (let i = 0; i < this.dna.length; i++) {
+        if (this.dna[i] === 'C' || this.dna[i] === 'G') {
+          count++
+        }
+      }
+      if ((count / 15) >= .60) {
+        return true
+      } else {
+        return false
+      }
+    }
   }     
 }
-
-let z = pAequorFactory(1, mockUpStrand())
-let p = pAequorFactory(2, mockUpStrand())
+//Creates array of 30 specimens that are suitable to study
